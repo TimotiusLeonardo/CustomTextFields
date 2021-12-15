@@ -18,17 +18,6 @@ open class MaterialPlaceHolderTextField: UITextField {
         case error
         case warning
         case normal
-        
-        var baseColor: UIColor {
-            switch self {
-            case .error:
-                return UIColor.red
-            case .warning:
-                return UIColor.yellow
-            case .normal:
-                return UIColor.black
-            }
-        }
     }
     
     fileprivate var lmd_state : TextFieldEditingState = .notEditing {
@@ -37,9 +26,8 @@ open class MaterialPlaceHolderTextField: UITextField {
         }
     }
     
-    fileprivate var lmd_status_state : TextFieldStatusState = .normal {
+    private var lmd_status_state : TextFieldStatusState = .normal {
         didSet {
-            toggleBaseColor()
             setNeedsLayout()
         }
     }
@@ -47,13 +35,49 @@ open class MaterialPlaceHolderTextField: UITextField {
     fileprivate weak var lmd_placeholder: UILabel!
     fileprivate let textRectYInset : CGFloat = 7
     fileprivate var editingConstraints = [NSLayoutConstraint]()
-    fileprivate var notEditingConstraints : [NSLayoutConstraint]!
-    fileprivate var activeConstraints : [NSLayoutConstraint]!
+    fileprivate var notEditingConstraints = [NSLayoutConstraint]()
+    fileprivate var activeConstraints = [NSLayoutConstraint]()
     
-    fileprivate lazy var hintLabel: UILabel? = {
+    private lazy var hintLabel: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 11, weight: .regular)
+        label.numberOfLines = 2
         return label
     }()
+    
+    private var _baseColor: UIColor {
+        switch lmd_status_state {
+        case .error:
+            return .red
+        case .warning:
+            return .blue
+        case .normal:
+            return borderColor ?? .placeholderText
+        }
+    }
+    
+    private var _placeholderColor: UIColor {
+        switch lmd_status_state {
+        case .error:
+            return .red
+        case .warning:
+            return .blue
+        case .normal:
+            return placeholderTextColor ?? .yellow
+        }
+    }
+    
+    private var _alternativePlaceholderColor: UIColor {
+        switch lmd_status_state {
+        case .error:
+            return .red
+        case .warning:
+            return .blue
+        case .normal:
+            return alternativePlaceholderColor ?? .placeholderText
+        }
+    }
     
     //MARK: - PUBLIC VARIABLES
     public var placeholderFont = UIFont.systemFont(ofSize: 14) {
@@ -87,19 +111,19 @@ open class MaterialPlaceHolderTextField: UITextField {
         }
     }
     
-    @IBInspectable public  var borderColor: UIColor? = UIColor(white: 74/255, alpha: 1) {
+    @IBInspectable public  var borderColor: UIColor? {
         didSet {
             self.setNeedsLayout()
         }
     }
     
-    @IBInspectable public  var errorBorderColor: UIColor? = UIColor(red: 1, green: 0, blue: 131/255, alpha: 1) {
+    @IBInspectable public var placeholderTextColor: UIColor? {
         didSet {
             self.setNeedsLayout()
         }
     }
     
-    @IBInspectable public var placeholderTextColor: UIColor = UIColor(white: 183/255, alpha: 1) {
+    @IBInspectable public var alternativePlaceholderColor: UIColor? {
         didSet {
             self.setNeedsLayout()
         }
@@ -123,7 +147,19 @@ open class MaterialPlaceHolderTextField: UITextField {
         }
     }
     
-    @IBInspectable public var enabledBackgroundColor: UIColor = .white {
+    @IBInspectable public var enabledBackgroundColor: UIColor = .lightGray {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
+    
+    @IBInspectable public var _borderWidth: CGFloat = 2 {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
+    
+    @IBInspectable public var _cornerRadius: CGFloat = 5 {
         didSet {
             self.setNeedsLayout()
         }
@@ -135,8 +171,17 @@ open class MaterialPlaceHolderTextField: UITextField {
         }
     }
     
-    @IBInspectable public var topPadding: CGFloat = 6
-    @IBInspectable public var leftPadding: CGFloat = 14
+    @IBInspectable public var topPadding: CGFloat = 6 {
+        didSet {
+            self.setupViews()
+        }
+    }
+    
+    @IBInspectable public var leftPadding: CGFloat = 16 {
+        didSet {
+            self.setupViews()
+        }
+    }
     
     //MARK: - LIFE CYCLE
     override public init(frame: CGRect) {
@@ -150,13 +195,16 @@ open class MaterialPlaceHolderTextField: UITextField {
     }
     
     fileprivate func setupViews() {
-        self.layer.cornerRadius = 5
-        self.layer.borderWidth = 2
-        
         self.addTarget(self, action: #selector(editingDidBegin), for: UIControl.Event.editingDidBegin)
         self.addTarget(self, action: #selector(editingDidEnd), for: UIControl.Event.editingDidEnd)
         
         let placeholder = UILabel()
+        addSubview(hintLabel)
+        NSLayoutConstraint.activate([
+            hintLabel.topAnchor.constraint(equalTo: bottomAnchor, constant: 4),
+            hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16)
+        ])
         
         placeholder.layoutMargins = .zero
         placeholder.translatesAutoresizingMaskIntoConstraints = false
@@ -190,15 +238,27 @@ open class MaterialPlaceHolderTextField: UITextField {
     
     override open func layoutSubviews() {
         super.layoutSubviews()
-        UIView.animate(withDuration: 0.2) {
+        self.layer.cornerRadius = _cornerRadius
+        self.layer.borderWidth = _borderWidth
+        UIView.transition(with: lmd_placeholder, duration: 0.25, options: .transitionCrossDissolve) {
+            switch self.lmd_state {
+            case .editing:
+                self.lmd_placeholder.textColor = self._alternativePlaceholderColor
+            case .notEditing:
+                if (self.text ?? "").isEmpty {
+                    self.lmd_placeholder.textColor = self._placeholderColor
+                } else {
+                    self.lmd_placeholder.textColor = self._alternativePlaceholderColor
+                }
+            }
+            
             self.lmd_placeholder.font = self.placeholderFont
-            self.lmd_placeholder.textColor = self.placeholderTextColor
             self.lmd_placeholder.text = self.placeholderText
             self.textColor = self.disabled ? self.disabledTextColor : self.textFieldTextColor
             self.backgroundColor = self.disabled ? self.disabledBackgroundColor : self.enabledBackgroundColor
-            self.layer.borderColor = self.lmd_status_state != .normal ? self.lmd_status_state.baseColor.cgColor :
-                                     self.lmd_state == .editing ? self.borderColor?.cgColor : UIColor(white: 236/255, alpha: 1).cgColor
+            self.layer.borderColor = self._baseColor.cgColor
         }
+        
         self.tintColor = themeColor
         self.isEnabled = !self.disabled
     }
@@ -228,6 +288,7 @@ open class MaterialPlaceHolderTextField: UITextField {
         let animationBlock = {
             self.layoutIfNeeded()
             self.lmd_placeholder.transform = CGAffineTransform(scaleX: self.placeholderSizeFactor, y: self.placeholderSizeFactor)
+            self.lmd_placeholder.textColor = self.lmd_status_state == .normal ? UIColor.yellow : self.placeholderTextColor
         }
         if animated {
             UIView.animate(withDuration: 0.2) {
@@ -238,14 +299,11 @@ open class MaterialPlaceHolderTextField: UITextField {
         }
     }
     
-    private func toggleBaseColor() {
-        self.placeholderTextColor = lmd_status_state.baseColor
-    }
-    
     fileprivate func animatePlaceholderToInactivePosition(animated: Bool = true) {
         self.layoutIfNeeded()
         NSLayoutConstraint.deactivate(self.activeConstraints)
         NSLayoutConstraint.activate(self.notEditingConstraints)
+        
         self.activeConstraints = self.notEditingConstraints
         let animationBlock = {
             self.layoutIfNeeded()
@@ -280,7 +338,7 @@ open class MaterialPlaceHolderTextField: UITextField {
     
     fileprivate func calculateTextRect(forBounds bounds: CGRect) -> CGRect {
         let textInset = (self.placeholderText ?? "").isEmpty == true ? 0 : self.textRectYInset
-        return CGRect(x: leftPadding,
+        return CGRect(x: leftPadding - 5,
                       y: textInset,
                       width: bounds.width - (leftPadding * 2),
                       height: bounds.height)
@@ -291,7 +349,9 @@ open class MaterialPlaceHolderTextField: UITextField {
         self.lmd_state = state
     }
     
-    func updateStatusState(_ state: TextFieldStatusState) {
+    func updateStatusState(_ state: TextFieldStatusState, message: String?, borderWidth: CGFloat = 0) {
         self.lmd_status_state = state
+        hintLabel.text = message
+        _borderWidth = borderWidth
     }
 }

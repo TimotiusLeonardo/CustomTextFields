@@ -27,8 +27,10 @@ class ViewController: UIViewController {
             
         }
         
-        materialTextField.placeholderText = "Timotius"
-//        materialTextField.disabled = true
+        materialTextField.placeholderText = "Enter Your Password"
+        materialTextField.placeholderTextColor = .black
+        materialTextField._cornerRadius = 8
+        materialTextField._borderWidth = 0
         materialTextField.addTarget(self, action: #selector(startTextField), for: .allTouchEvents)
     }
     
@@ -59,15 +61,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onToggleError(_ sender: Any) {
-        materialTextField.updateStatusState(.error)
+        materialTextField.updateStatusState(.error, message: nil, borderWidth: 2)
     }
     
     @IBAction func onToggleWarning(_ sender: Any) {
-        materialTextField.updateStatusState(.warning)
+        materialTextField.updateStatusState(.warning, message: nil)
     }
     
     @IBAction func onToggleNormal(_ sender: Any) {
-        materialTextField.updateStatusState(.normal)
+        materialTextField.updateStatusState(.normal, message: nil)
     }
 }
 
