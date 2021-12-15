@@ -16,6 +16,8 @@
 		FF1DF87727607CAA00397291 /* OneTimeCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1DF87627607CAA00397291 /* OneTimeCodeTests.swift */; };
 		FF1DF88127607CAA00397291 /* OneTimeCodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1DF88027607CAA00397291 /* OneTimeCodeUITests.swift */; };
 		FF1DF88327607CAA00397291 /* OneTimeCodeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1DF88227607CAA00397291 /* OneTimeCodeUITestsLaunchTests.swift */; };
+		FF1DF89027607D2500397291 /* OneTimeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1DF88F27607D2500397291 /* OneTimeTextField.swift */; };
+		FF4B818027672DE600E4BA97 /* MaterialPlaceHolderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B817F27672DE600E4BA97 /* MaterialPlaceHolderTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		FF1DF87C27607CAA00397291 /* OneTimeCodeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneTimeCodeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF1DF88027607CAA00397291 /* OneTimeCodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeCodeUITests.swift; sourceTree = "<group>"; };
 		FF1DF88227607CAA00397291 /* OneTimeCodeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeCodeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FF1DF88F27607D2500397291 /* OneTimeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeTextField.swift; sourceTree = "<group>"; };
+		FF4B817F27672DE600E4BA97 /* MaterialPlaceHolderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialPlaceHolderTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				FF1DF86827607CA900397291 /* Assets.xcassets */,
 				FF1DF86A27607CA900397291 /* LaunchScreen.storyboard */,
 				FF1DF86D27607CA900397291 /* Info.plist */,
+				FF1DF88F27607D2500397291 /* OneTimeTextField.swift */,
+				FF4B817F27672DE600E4BA97 /* MaterialPlaceHolderTextField.swift */,
 			);
 			path = OneTimeCode;
 			sourceTree = "<group>";
@@ -259,8 +265,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF1DF86427607CA800397291 /* ViewController.swift in Sources */,
+				FF4B818027672DE600E4BA97 /* MaterialPlaceHolderTextField.swift in Sources */,
 				FF1DF86027607CA800397291 /* AppDelegate.swift in Sources */,
 				FF1DF86227607CA800397291 /* SceneDelegate.swift in Sources */,
+				FF1DF89027607D2500397291 /* OneTimeTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +453,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -456,7 +465,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -473,6 +482,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -484,7 +494,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
