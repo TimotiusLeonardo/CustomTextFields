@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     @IBOutlet var textField: OneTimeTextField!
     @IBOutlet weak var materialTextField: MaterialPlaceHolderTextField!
     @IBOutlet var label: UILabel!
-
+    @IBOutlet var mockView: UIView!
+    @IBOutlet weak var mockViewTopAnchor: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,15 +63,22 @@ class ViewController: UIViewController {
     }
     
     @IBAction func onToggleError(_ sender: Any) {
-        materialTextField.updateStatusState(.error, message: nil, borderWidth: 2)
+        materialTextField.updateStatusState(.error, message: "Error Toggle", borderWidth: 2)
+        UIView.transition(with: mockView, duration: 0.1, options: .preferredFramesPerSecond60, animations: {
+            self.mockViewTopAnchor.constant = 16
+        }, completion: nil)
     }
     
     @IBAction func onToggleWarning(_ sender: Any) {
-        materialTextField.updateStatusState(.warning, message: nil)
+        materialTextField.updateStatusState(.warning, message: "Warning Toggle")
+        UIView.transition(with: mockView, duration: 0.2, options: .showHideTransitionViews, animations: {
+            self.mockViewTopAnchor.constant = 16
+        }, completion: nil)
     }
     
     @IBAction func onToggleNormal(_ sender: Any) {
-        materialTextField.updateStatusState(.normal, message: nil)
+        materialTextField.updateStatusState(.normal, message: "Normal Toggle")
+        mockViewTopAnchor.constant = 8
     }
 }
 

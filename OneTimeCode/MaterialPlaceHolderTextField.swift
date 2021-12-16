@@ -53,7 +53,7 @@ open class MaterialPlaceHolderTextField: UITextField {
         case .warning:
             return .blue
         case .normal:
-            return borderColor ?? .placeholderText
+            return baseColor ?? .placeholderText
         }
     }
     
@@ -111,7 +111,7 @@ open class MaterialPlaceHolderTextField: UITextField {
         }
     }
     
-    @IBInspectable public  var borderColor: UIColor? {
+    @IBInspectable public  var baseColor: UIColor? {
         didSet {
             self.setNeedsLayout()
         }
@@ -251,7 +251,7 @@ open class MaterialPlaceHolderTextField: UITextField {
                     self.lmd_placeholder.textColor = self._alternativePlaceholderColor
                 }
             }
-            
+            self.hintLabel.textColor = self._baseColor
             self.lmd_placeholder.font = self.placeholderFont
             self.lmd_placeholder.text = self.placeholderText
             self.textColor = self.disabled ? self.disabledTextColor : self.textFieldTextColor
@@ -344,6 +344,12 @@ open class MaterialPlaceHolderTextField: UITextField {
                       height: bounds.height)
     }
     
+    private func animateHintLabelShow(_ message: String?) {
+        UIView.transition(with: hintLabel, duration: 0.2, options: .transitionCrossDissolve, animations: {
+            self.hintLabel.text = message
+        }, completion: nil)
+    }
+    
     //MARK: - PUBLIC FUNCTIONS
     func updateState(_ state: TextFieldEditingState) {
         self.lmd_state = state
@@ -351,7 +357,7 @@ open class MaterialPlaceHolderTextField: UITextField {
     
     func updateStatusState(_ state: TextFieldStatusState, message: String?, borderWidth: CGFloat = 0) {
         self.lmd_status_state = state
-        hintLabel.text = message
+        animateHintLabelShow(message)
         _borderWidth = borderWidth
     }
 }
