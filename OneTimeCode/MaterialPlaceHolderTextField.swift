@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol MaterialPlaceholderDelegate: AnyObject {
+    func didChangeValue(value: String?)
+}
+
 open class MaterialPlaceHolderTextField: UITextField {
     
     enum TextFieldEditingState {
@@ -46,6 +50,15 @@ open class MaterialPlaceHolderTextField: UITextField {
         return label
     }()
     
+    private lazy var rightButton: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.isUserInteractionEnabled = true
+        let tapHandler = UITapGestureRecognizer(target: self, action: #selector(didTapRightButton))
+        imageView.addGestureRecognizer(tapHandler)
+        return imageView
+    }()
+    
     private var _baseColor: UIColor {
         switch lmd_status_state {
         case .error:
@@ -79,8 +92,15 @@ open class MaterialPlaceHolderTextField: UITextField {
         }
     }
     
+    private var buttonConstraints = [NSLayoutConstraint]()
+    
     //MARK: - PUBLIC VARIABLES
-    public var placeholderFont = UIFont.systemFont(ofSize: 14) {
+    
+    var callback: ((String?, UITextField) -> Void)?
+    
+    weak var mtf_textFieldDelegate: MaterialPlaceholderDelegate?
+    
+    var placeholderFont = UIFont.systemFont(ofSize: 14) {
         didSet {
             self.setNeedsLayout()
         }
@@ -183,6 +203,24 @@ open class MaterialPlaceHolderTextField: UITextField {
         }
     }
     
+    @IBInspectable public var rightButtonWidth: CGFloat = 24 {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
+    
+    @IBInspectable public var rightButtonHeight: CGFloat = 24 {
+        didSet {
+            self.setNeedsLayout()
+        }
+    }
+    
+    @IBInspectable public var rightViewImage: UIImage? {
+        didSet {
+            rightButton.image = self.rightViewImage
+        }
+    }
+    
     //MARK: - LIFE CYCLE
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -195,16 +233,32 @@ open class MaterialPlaceHolderTextField: UITextField {
     }
     
     fileprivate func setupViews() {
-        self.addTarget(self, action: #selector(editingDidBegin), for: UIControl.Event.editingDidBegin)
-        self.addTarget(self, action: #selector(editingDidEnd), for: UIControl.Event.editingDidEnd)
+        self.addTarget(self, action: #selector(editingDidBegin), for: .editingDidBegin)
+        self.addTarget(self, action: #selector(editingDidEnd), for: .editingDidEnd)
+        self.addTarget(self, action: #selector(didValueChanged), for: .editingChanged)
         
         let placeholder = UILabel()
         addSubview(hintLabel)
+        addSubview(rightButton)
+        
+        self.buttonConstraints = [
+            rightButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            rightButton.heightAnchor.constraint(equalToConstant: rightButtonHeight),
+            rightButton.widthAnchor.constraint(equalToConstant: rightButtonWidth),
+            rightButton.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ]
+        
         NSLayoutConstraint.activate([
             hintLabel.topAnchor.constraint(equalTo: bottomAnchor, constant: 4),
             hintLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             hintLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16)
         ])
+        
+        NSLayoutConstraint.activate(self.buttonConstraints)
+        
+        if rightViewImage == nil {
+            rightButton.isHidden = true
+        }
         
         placeholder.layoutMargins = .zero
         placeholder.translatesAutoresizingMaskIntoConstraints = false
@@ -240,6 +294,18 @@ open class MaterialPlaceHolderTextField: UITextField {
         super.layoutSubviews()
         self.layer.cornerRadius = _cornerRadius
         self.layer.borderWidth = _borderWidth
+        
+        NSLayoutConstraint.deactivate(self.buttonConstraints)
+        
+        self.buttonConstraints = [
+            rightButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            rightButton.heightAnchor.constraint(equalToConstant: rightButtonHeight),
+            rightButton.widthAnchor.constraint(equalToConstant: rightButtonWidth),
+            rightButton.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(self.buttonConstraints)
+        
         UIView.transition(with: lmd_placeholder, duration: 0.25, options: .transitionCrossDissolve) {
             switch self.lmd_state {
             case .editing:
@@ -324,6 +390,18 @@ open class MaterialPlaceHolderTextField: UITextField {
     
     @objc private func editingDidEnd() {
         self.lmd_state = .notEditing
+    }
+    
+    @objc private func didTapRightButton() {
+        guard let callback = callback else {
+            return
+        }
+        
+        callback(self.text, self)
+    }
+    
+    @objc private func didValueChanged() {
+        mtf_textFieldDelegate?.didChangeValue(value: self.text)
     }
     
     override open func textRect(forBounds bounds: CGRect) -> CGRect {

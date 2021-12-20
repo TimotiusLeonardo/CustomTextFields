@@ -7,8 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    
+class ViewController: UIViewController, MaterialPlaceholderDelegate {
     @IBOutlet var textField: OneTimeTextField!
     @IBOutlet weak var materialTextField: MaterialPlaceHolderTextField!
     @IBOutlet var label: UILabel!
@@ -33,7 +32,8 @@ class ViewController: UIViewController {
         materialTextField.placeholderTextColor = .black
         materialTextField._cornerRadius = 8
         materialTextField._borderWidth = 0
-        materialTextField.addTarget(self, action: #selector(startTextField), for: .allTouchEvents)
+        materialTextField.mtf_textFieldDelegate = self
+//        materialTextField.addTarget(self, action: #selector(startTextField), for: .allTouchEvents)
     }
     
     @objc func startTextField() {
@@ -60,6 +60,12 @@ class ViewController: UIViewController {
             }
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func didChangeValue(value: String?) {
+        if let value = value {
+            print(value)
+        }
     }
     
     @IBAction func onToggleError(_ sender: Any) {
