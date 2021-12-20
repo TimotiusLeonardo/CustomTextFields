@@ -46,6 +46,8 @@ class OneTimeTextField: UITextField {
         textContentType = .oneTimeCode
         
         addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        addTarget(self, action: #selector(didBeginEditing), for: .editingDidBegin)
+        addTarget(self, action: #selector(didEndEditing), for: .editingDidEnd)
         delegate = self
     }
     
@@ -77,18 +79,6 @@ class OneTimeTextField: UITextField {
             cursor.backgroundColor = .black
             cursor.alpha = index == 0 ? 1 : 0
             
-            let animationBlock: (() -> Void)? = index == 0 ? {
-                UIView.animate(withDuration: 1, delay: 0, options: [.repeat, .curveEaseIn], animations: {
-                    cursor.alpha = 0
-                }, completion: { _ in 
-                    cursor.alpha = 1
-                })
-            } : nil
-            
-            if let animation = animationBlock {
-                animation()
-            }
-            
             container.addSubview(label)
             container.addSubview(cursor)
             
@@ -115,6 +105,18 @@ class OneTimeTextField: UITextField {
         return stackView
     }
     
+    @objc func didBeginEditing() {
+        animateCursor()
+    }
+    
+    @objc func didEndEditing() {
+        for cursor in cursors {
+            cursor.isHidden = true
+            cursor.alpha = 0
+            cursor.layer.removeAllAnimations()
+        }
+    }
+    
     @objc private func textDidChange() {
         guard let text = self.text, text.count <= digitLabels.count else { return }
         
@@ -134,24 +136,26 @@ class OneTimeTextField: UITextField {
             }
         }
         
-        if text.count < cursors.count {
-            let currentCursor = cursors[text.count]
-            currentCursor.alpha = 1
-            currentCursor.isHidden = false
-            animateCursor(cursor: currentCursor)
-        }
+        animateCursor()
         
         if text.count == digitLabels.count {
             didEnterLastDigit?(text)
         }
     }
     
-    func animateCursor(cursor: UIView) {
-        UIView.animate(withDuration: 1, delay: 0, options: [.repeat], animations: {
-            cursor.alpha = 0
-        }, completion: { _ in
-            cursor.alpha = 1
-        })
+    func animateCursor() {
+        guard let text = self.text, text.count <= digitLabels.count else { return }
+        
+        if text.count < cursors.count {
+            let currentCursor = cursors[text.count]
+            currentCursor.alpha = 1
+            currentCursor.isHidden = false
+            UIView.animate(withDuration: 1, delay: 0, options: [.repeat], animations: {
+                currentCursor.alpha = 0
+            }, completion: { _ in
+                currentCursor.alpha = 1
+            })
+        }
     }
 }
 

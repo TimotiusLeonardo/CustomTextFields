@@ -33,7 +33,6 @@ class ViewController: UIViewController, MaterialPlaceholderDelegate {
         materialTextField._cornerRadius = 8
         materialTextField._borderWidth = 0
         materialTextField.mtf_textFieldDelegate = self
-//        materialTextField.addTarget(self, action: #selector(startTextField), for: .allTouchEvents)
     }
     
     @objc func startTextField() {
