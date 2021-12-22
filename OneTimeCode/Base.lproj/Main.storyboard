@@ -22,24 +22,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sg9-nw-HIy" customClass="MaterialPlaceHolderTextField" customModule="OneTimeCode" customModuleProvider="target">
-                                <rect key="frame" x="16" y="204.5" width="382" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="rL6-Zb-EI1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="rightButtonWidth">
-                                        <real key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="rightButtonHeight">
-                                        <real key="value" value="40"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fgj-SP-6IQ">
+                                <rect key="frame" x="16" y="204.5" width="382" height="128"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sb8-xi-7Fe">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
+                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                    </view>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sg9-nw-HIy" customClass="MaterialPlaceHolderTextField" customModule="OneTimeCode" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="68" width="382" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="rL6-Zb-EI1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rightButtonWidth">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="rightButtonHeight">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UgN-4x-ZA0">
-                                <rect key="frame" x="16" y="272.5" width="382" height="60"/>
+                                <rect key="frame" x="16" y="340.5" width="382" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBrownColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="mF0-IP-YXn"/>
@@ -54,7 +63,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Lgx-XE-efi">
-                                <rect key="frame" x="16" y="378" width="382" height="31"/>
+                                <rect key="frame" x="16" y="446" width="382" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om8-Qz-ft3">
                                         <rect key="frame" x="0.0" y="0.0" width="126" height="31"/>
@@ -86,20 +95,20 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="sg9-nw-HIy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="75b-ry-yGT"/>
                             <constraint firstItem="Lgx-XE-efi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DiL-kf-gC9"/>
                             <constraint firstItem="Ba8-aV-fEN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="MPm-pr-OG4"/>
                             <constraint firstItem="Evm-Dr-pe8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="QfJ-6g-Ohn"/>
+                            <constraint firstItem="Fgj-SP-6IQ" firstAttribute="top" secondItem="Ba8-aV-fEN" secondAttribute="bottom" constant="16" id="Syg-0E-bvM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UgN-4x-ZA0" secondAttribute="trailing" constant="16" id="VpM-aa-NOB"/>
-                            <constraint firstItem="sg9-nw-HIy" firstAttribute="top" secondItem="Ba8-aV-fEN" secondAttribute="bottom" constant="16" id="Xg4-6K-JOv"/>
                             <constraint firstItem="Lgx-XE-efi" firstAttribute="top" secondItem="UgN-4x-ZA0" secondAttribute="bottom" constant="45.5" id="fRq-gQ-QbZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lgx-XE-efi" secondAttribute="trailing" constant="16" id="gv0-u6-cas"/>
+                            <constraint firstItem="UgN-4x-ZA0" firstAttribute="top" secondItem="Fgj-SP-6IQ" secondAttribute="bottom" constant="8" id="jIW-8X-jpn"/>
                             <constraint firstItem="UgN-4x-ZA0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qnd-ty-Pvn"/>
-                            <constraint firstItem="UgN-4x-ZA0" firstAttribute="top" secondItem="sg9-nw-HIy" secondAttribute="bottom" constant="8" id="rwh-rC-VNj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fgj-SP-6IQ" secondAttribute="trailing" constant="16" id="sVG-1b-AKE"/>
+                            <constraint firstItem="Fgj-SP-6IQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="tk4-Du-eUs"/>
                             <constraint firstItem="Ba8-aV-fEN" firstAttribute="top" secondItem="Evm-Dr-pe8" secondAttribute="bottom" constant="32" id="uWD-vN-dPI"/>
                             <constraint firstItem="Evm-Dr-pe8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ucD-oc-Iwg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ba8-aV-fEN" secondAttribute="trailing" constant="16" id="wRN-31-zNt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sg9-nw-HIy" secondAttribute="trailing" constant="16" id="zEO-yj-FBw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Evm-Dr-pe8" secondAttribute="trailing" constant="16" id="zvf-Cx-5S0"/>
                         </constraints>
                     </view>
@@ -107,8 +116,9 @@
                         <outlet property="label" destination="Evm-Dr-pe8" id="PuM-oZ-vJD"/>
                         <outlet property="materialTextField" destination="sg9-nw-HIy" id="j8Q-63-47Z"/>
                         <outlet property="mockView" destination="UgN-4x-ZA0" id="VW0-Sw-evO"/>
-                        <outlet property="mockViewTopAnchor" destination="rwh-rC-VNj" id="eJS-4n-ppT"/>
+                        <outlet property="mockViewTopAnchor" destination="jIW-8X-jpn" id="VWe-8s-zRk"/>
                         <outlet property="textField" destination="Ba8-aV-fEN" id="wa9-Ho-l7m"/>
+                        <outlet property="viewInStackView" destination="Sb8-xi-7Fe" id="EUU-5Q-zoK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -137,6 +147,9 @@
         </systemColor>
         <systemColor name="systemBrownColor">
             <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

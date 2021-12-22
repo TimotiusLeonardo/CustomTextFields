@@ -18,6 +18,7 @@
 		FF1DF88327607CAA00397291 /* OneTimeCodeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1DF88227607CAA00397291 /* OneTimeCodeUITestsLaunchTests.swift */; };
 		FF1DF89027607D2500397291 /* OneTimeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1DF88F27607D2500397291 /* OneTimeTextField.swift */; };
 		FF4B818027672DE600E4BA97 /* MaterialPlaceHolderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B817F27672DE600E4BA97 /* MaterialPlaceHolderTextField.swift */; };
+		FFF39ADE277094540083CF65 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF39ADD277094540083CF65 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		FF1DF88227607CAA00397291 /* OneTimeCodeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeCodeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF1DF88F27607D2500397291 /* OneTimeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeTextField.swift; sourceTree = "<group>"; };
 		FF4B817F27672DE600E4BA97 /* MaterialPlaceHolderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialPlaceHolderTextField.swift; sourceTree = "<group>"; };
+		FFF39ADD277094540083CF65 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				FF1DF86D27607CA900397291 /* Info.plist */,
 				FF1DF88F27607D2500397291 /* OneTimeTextField.swift */,
 				FF4B817F27672DE600E4BA97 /* MaterialPlaceHolderTextField.swift */,
+				FFF39ADD277094540083CF65 /* Constants.swift */,
 			);
 			path = OneTimeCode;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				FF1DF86027607CA800397291 /* AppDelegate.swift in Sources */,
 				FF1DF86227607CA800397291 /* SceneDelegate.swift in Sources */,
 				FF1DF89027607D2500397291 /* OneTimeTextField.swift in Sources */,
+				FFF39ADE277094540083CF65 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
