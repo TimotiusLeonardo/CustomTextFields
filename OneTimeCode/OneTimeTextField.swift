@@ -21,13 +21,15 @@ class OneTimeTextField: UITextField {
         return recogizer
     }()
     
-    func configure(with slotCount: Int = 6) {
+    func configure(with slotCount: Int = 6, backgroundColor: UIColor = .lightGray,
+                   textColor: UIColor = .black, cursorColor: UIColor = .black,
+                   font: UIFont = .systemFont(ofSize: 40, weight: .regular)) {
         guard isConfigured == false else { return }
         isConfigured.toggle()
         
         configureTextField()
         
-        let labelsStackView = createLabelsStackView(with: slotCount)
+        let labelsStackView = createLabelsStackView(with: slotCount, backgroundColor: backgroundColor, textColor: textColor, cursorColor: cursorColor, font: font)
         addSubview(labelsStackView)
         addGestureRecognizer(tapRecognizer)
         
@@ -51,7 +53,8 @@ class OneTimeTextField: UITextField {
         delegate = self
     }
     
-    private func createLabelsStackView(with count: Int) -> UIStackView {
+    private func createLabelsStackView(with count: Int, backgroundColor: UIColor,
+                                       textColor: UIColor, cursorColor: UIColor, font: UIFont) -> UIStackView {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
@@ -69,15 +72,17 @@ class OneTimeTextField: UITextField {
             cursor.translatesAutoresizingMaskIntoConstraints = false
             
             label.textAlignment = .center
-            label.font = .systemFont(ofSize: 40, weight: .regular)
+            label.font = font
             label.isUserInteractionEnabled = true
             label.text = defaultCharacter
-            label.backgroundColor = .lightGray
+            label.backgroundColor = backgroundColor
             label.layer.cornerRadius = 8
             label.layer.masksToBounds = true
+            label.textColor = textColor
             
             cursor.backgroundColor = .black
             cursor.alpha = index == 0 ? 1 : 0
+            cursor.backgroundColor = cursorColor
             
             container.addSubview(label)
             container.addSubview(cursor)

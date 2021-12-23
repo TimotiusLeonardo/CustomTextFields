@@ -19,7 +19,7 @@ class ViewController: UIViewController, MaterialPlaceholderDelegate {
         super.viewDidLoad()
         
         hideKeyboardWhenTappedAround()
-        textField.configure()
+        textField.configure(backgroundColor: .red, textColor: .white, cursorColor: .white, font: .systemFont(ofSize: 20, weight: .bold))
         textField.didEnterLastDigit = { [weak self] code in
             let alert = UIAlertController(title: "Success", message: code, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay!", style: .default, handler: { _ in
