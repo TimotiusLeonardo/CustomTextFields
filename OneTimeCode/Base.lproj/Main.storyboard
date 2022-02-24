@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jr8-w0-WWy">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,24 +16,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Evm-Dr-pe8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Evm-Dr-pe8">
                                 <rect key="frame" x="16" y="76" width="382" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fgj-SP-6IQ">
-                                <rect key="frame" x="16" y="204.5" width="382" height="128"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" spacing="105" translatesAutoresizingMaskIntoConstraints="NO" id="Fgj-SP-6IQ">
+                                <rect key="frame" x="16" y="205" width="382" height="225"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sb8-xi-7Fe">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
                                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sg9-nw-HIy" customClass="MaterialPlaceHolderTextField" customModule="OneTimeCode" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="68" width="382" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="rL6-Zb-EI1"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="165" width="382" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <userDefinedRuntimeAttributes>
@@ -47,26 +45,17 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UgN-4x-ZA0">
-                                <rect key="frame" x="16" y="340.5" width="382" height="60"/>
-                                <color key="backgroundColor" systemColor="systemBrownColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="mF0-IP-YXn"/>
-                                </constraints>
-                            </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ba8-aV-fEN" customClass="OneTimeTextField" customModule="OneTimeCode" customModuleProvider="target">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ba8-aV-fEN" customClass="OneTimeTextField" customModule="OneTimeCode" customModuleProvider="target">
                                 <rect key="frame" x="16" y="128.5" width="382" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="LlQ-Ue-mrk"/>
-                                </constraints>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Lgx-XE-efi">
-                                <rect key="frame" x="16" y="446" width="382" height="31"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Lgx-XE-efi">
+                                <rect key="frame" x="19" y="693" width="379" height="31"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="om8-Qz-ft3">
-                                        <rect key="frame" x="0.0" y="0.0" width="126" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Toggle Error"/>
                                         <connections>
@@ -74,7 +63,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UlZ-wW-HvZ">
-                                        <rect key="frame" x="128" y="0.0" width="126" height="31"/>
+                                        <rect key="frame" x="127" y="0.0" width="125" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                         <connections>
@@ -82,7 +71,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4a0-Vi-SON">
-                                        <rect key="frame" x="256" y="0.0" width="126" height="31"/>
+                                        <rect key="frame" x="254" y="0.0" width="125" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Toggle Warning"/>
                                         <connections>
@@ -94,29 +83,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Lgx-XE-efi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="DiL-kf-gC9"/>
-                            <constraint firstItem="Ba8-aV-fEN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="MPm-pr-OG4"/>
-                            <constraint firstItem="Evm-Dr-pe8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="32" id="QfJ-6g-Ohn"/>
-                            <constraint firstItem="Fgj-SP-6IQ" firstAttribute="top" secondItem="Ba8-aV-fEN" secondAttribute="bottom" constant="16" id="Syg-0E-bvM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UgN-4x-ZA0" secondAttribute="trailing" constant="16" id="VpM-aa-NOB"/>
-                            <constraint firstItem="Lgx-XE-efi" firstAttribute="top" secondItem="UgN-4x-ZA0" secondAttribute="bottom" constant="45.5" id="fRq-gQ-QbZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lgx-XE-efi" secondAttribute="trailing" constant="16" id="gv0-u6-cas"/>
-                            <constraint firstItem="UgN-4x-ZA0" firstAttribute="top" secondItem="Fgj-SP-6IQ" secondAttribute="bottom" constant="8" id="jIW-8X-jpn"/>
-                            <constraint firstItem="UgN-4x-ZA0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qnd-ty-Pvn"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fgj-SP-6IQ" secondAttribute="trailing" constant="16" id="sVG-1b-AKE"/>
-                            <constraint firstItem="Fgj-SP-6IQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="tk4-Du-eUs"/>
-                            <constraint firstItem="Ba8-aV-fEN" firstAttribute="top" secondItem="Evm-Dr-pe8" secondAttribute="bottom" constant="32" id="uWD-vN-dPI"/>
-                            <constraint firstItem="Evm-Dr-pe8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ucD-oc-Iwg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ba8-aV-fEN" secondAttribute="trailing" constant="16" id="wRN-31-zNt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Evm-Dr-pe8" secondAttribute="trailing" constant="16" id="zvf-Cx-5S0"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="label" destination="Evm-Dr-pe8" id="PuM-oZ-vJD"/>
                         <outlet property="materialTextField" destination="sg9-nw-HIy" id="j8Q-63-47Z"/>
-                        <outlet property="mockView" destination="UgN-4x-ZA0" id="VW0-Sw-evO"/>
-                        <outlet property="mockViewTopAnchor" destination="jIW-8X-jpn" id="VWe-8s-zRk"/>
                         <outlet property="textField" destination="Ba8-aV-fEN" id="wa9-Ho-l7m"/>
                         <outlet property="viewInStackView" destination="Sb8-xi-7Fe" id="EUU-5Q-zoK"/>
                     </connections>
@@ -125,16 +95,48 @@
             </objects>
             <point key="canvasLocation" x="28.985507246376812" y="83.705357142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--Second View Controller-->
         <scene sceneID="QdK-5W-2bi">
             <objects>
-                <viewController id="jr8-w0-WWy" sceneMemberID="viewController">
+                <viewController id="jr8-w0-WWy" customClass="SecondViewController" customModule="OneTimeCode" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5uP-fD-geK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fYR-Kh-vW4" customClass="MaterialTextView" customModule="OneTimeCode" customModuleProvider="target">
+                                <rect key="frame" x="30" y="62" width="354" height="290"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="290" id="5zf-Cp-knE"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholderText" value="Timotius"/>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0Y-rp-zoo">
+                                <rect key="frame" x="30" y="388" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="fSs-u8-OHR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fSs-u8-OHR" firstAttribute="trailing" secondItem="fYR-Kh-vW4" secondAttribute="trailing" constant="30" id="1il-GJ-efG"/>
+                            <constraint firstItem="fYR-Kh-vW4" firstAttribute="leading" secondItem="fSs-u8-OHR" secondAttribute="leading" constant="30" id="C4H-D1-1RC"/>
+                            <constraint firstItem="fYR-Kh-vW4" firstAttribute="top" secondItem="fSs-u8-OHR" secondAttribute="top" constant="18" id="Ut8-at-zfa"/>
+                            <constraint firstItem="fSs-u8-OHR" firstAttribute="trailing" secondItem="u0Y-rp-zoo" secondAttribute="trailing" constant="342" id="Vqs-bO-GhH"/>
+                            <constraint firstItem="u0Y-rp-zoo" firstAttribute="top" secondItem="fYR-Kh-vW4" secondAttribute="bottom" constant="36" id="a4b-ls-3d4"/>
+                            <constraint firstItem="u0Y-rp-zoo" firstAttribute="leading" secondItem="fSs-u8-OHR" secondAttribute="leading" constant="30" id="xaI-Bw-aO4"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="materialTextView" destination="fYR-Kh-vW4" id="05v-73-LhA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mye-fC-i9C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,11 +144,11 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemBrownColor">
-            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

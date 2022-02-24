@@ -15,6 +15,8 @@ class ViewController: UIViewController, MaterialPlaceholderDelegate {
     @IBOutlet weak var mockViewTopAnchor: NSLayoutConstraint!
     @IBOutlet weak var viewInStackView: UIView!
     
+    lazy var datePicker = UIDatePicker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,12 +30,23 @@ class ViewController: UIViewController, MaterialPlaceholderDelegate {
             self?.present(alert, animated: true, completion: nil)
         }
         
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.datePickerMode = .date
+        
         materialTextField.placeholderText = "Enter Your Password"
         materialTextField.placeholderTextColor = .black
         materialTextField._cornerRadius = 8
         materialTextField._borderWidth = 0
         materialTextField.mtf_textFieldDelegate = self
-        materialTextField.isSecureTextEntry = true
+//        materialTextField.isSecureTextEntry = true
+        textField.addTarget(self, action: #selector(clearTextField), for: .editingDidEnd)
+        materialTextField.disabledTextColor = .black
+        materialTextField.textFieldTextColor = .red
+    }
+    
+    @objc func clearTextField() {
+        textField.text = ""
+        textField.textDidChange()
     }
     
     @objc func startTextField() {
@@ -105,6 +118,10 @@ class ViewController: UIViewController, MaterialPlaceholderDelegate {
         materialTextField.updateStatusState(.normal, message: "Normal Toggle")
         mockViewTopAnchor.constant = 8
     }
+}
+
+extension ViewController: MaterialTextViewDelegate {
+    
 }
 
 extension UIViewController {

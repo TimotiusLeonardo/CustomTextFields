@@ -122,7 +122,7 @@ class OneTimeTextField: UITextField {
         }
     }
     
-    @objc private func textDidChange() {
+    @objc func textDidChange() {
         guard let text = self.text, text.count <= digitLabels.count else { return }
         
         for i in 0 ..< digitLabels.count {

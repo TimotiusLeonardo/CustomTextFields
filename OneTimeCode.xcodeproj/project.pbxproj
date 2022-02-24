@@ -18,6 +18,9 @@
 		FF1DF88327607CAA00397291 /* OneTimeCodeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1DF88227607CAA00397291 /* OneTimeCodeUITestsLaunchTests.swift */; };
 		FF1DF89027607D2500397291 /* OneTimeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1DF88F27607D2500397291 /* OneTimeTextField.swift */; };
 		FF4B818027672DE600E4BA97 /* MaterialPlaceHolderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF4B817F27672DE600E4BA97 /* MaterialPlaceHolderTextField.swift */; };
+		FFC776F627C78354003FFC9E /* MaterialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC776F527C78354003FFC9E /* MaterialTextView.swift */; };
+		FFC776F827C794DE003FFC9E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC776F727C794DE003FFC9E /* SecondViewController.swift */; };
+		FFC776FA27C7D6F9003FFC9E /* IDNMaterialTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC776F927C7D6F8003FFC9E /* IDNMaterialTextView.swift */; };
 		FFF39ADE277094540083CF65 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFF39ADD277094540083CF65 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +57,9 @@
 		FF1DF88227607CAA00397291 /* OneTimeCodeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeCodeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FF1DF88F27607D2500397291 /* OneTimeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTimeTextField.swift; sourceTree = "<group>"; };
 		FF4B817F27672DE600E4BA97 /* MaterialPlaceHolderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialPlaceHolderTextField.swift; sourceTree = "<group>"; };
+		FFC776F527C78354003FFC9E /* MaterialTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialTextView.swift; sourceTree = "<group>"; };
+		FFC776F727C794DE003FFC9E /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		FFC776F927C7D6F8003FFC9E /* IDNMaterialTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDNMaterialTextView.swift; sourceTree = "<group>"; };
 		FFF39ADD277094540083CF65 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +121,9 @@
 				FF1DF88F27607D2500397291 /* OneTimeTextField.swift */,
 				FF4B817F27672DE600E4BA97 /* MaterialPlaceHolderTextField.swift */,
 				FFF39ADD277094540083CF65 /* Constants.swift */,
+				FFC776F527C78354003FFC9E /* MaterialTextView.swift */,
+				FFC776F727C794DE003FFC9E /* SecondViewController.swift */,
+				FFC776F927C7D6F8003FFC9E /* IDNMaterialTextView.swift */,
 			);
 			path = OneTimeCode;
 			sourceTree = "<group>";
@@ -267,7 +276,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFC776F827C794DE003FFC9E /* SecondViewController.swift in Sources */,
+				FFC776F627C78354003FFC9E /* MaterialTextView.swift in Sources */,
 				FF1DF86427607CA800397291 /* ViewController.swift in Sources */,
+				FFC776FA27C7D6F9003FFC9E /* IDNMaterialTextView.swift in Sources */,
 				FF4B818027672DE600E4BA97 /* MaterialPlaceHolderTextField.swift in Sources */,
 				FF1DF86027607CA800397291 /* AppDelegate.swift in Sources */,
 				FF1DF86227607CA800397291 /* SceneDelegate.swift in Sources */,

@@ -277,7 +277,7 @@ open class MaterialPlaceHolderTextField: UITextField {
     }
     
     fileprivate func calculateEditingConstraints() {
-        let attributedStringPlaceholder = NSAttributedString(string: (self.placeholderText ?? "").uppercased(), attributes: [
+        let attributedStringPlaceholder = NSAttributedString(string: (self.placeholderText ?? ""), attributes: [
             NSAttributedString.Key.font : self.placeholderFont
             ])
         let originalWidth = attributedStringPlaceholder.boundingRect(with: CGSize(width: .greatestFiniteMagnitude, height: self.frame.height), options: [], context: nil).width
@@ -416,7 +416,7 @@ open class MaterialPlaceHolderTextField: UITextField {
     
     fileprivate func calculateTextRect(forBounds bounds: CGRect) -> CGRect {
         let textInset = (self.placeholderText ?? "").isEmpty == true ? 0 : self.textRectYInset
-        return CGRect(x: leftPadding - 5,
+        return CGRect(x: leftPadding,
                       y: textInset,
                       width: bounds.width - (leftPadding * 2),
                       height: bounds.height)
