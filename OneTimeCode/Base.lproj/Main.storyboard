@@ -122,6 +122,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZgN-EA-3MM" customClass="IDNMaterialTextView" customModule="OneTimeCode" customModuleProvider="target">
+                                <rect key="frame" x="87" y="534" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="fSs-u8-OHR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -135,6 +140,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="IdnMaterialTextView" destination="ZgN-EA-3MM" id="wf8-Hk-hgN"/>
                         <outlet property="materialTextView" destination="fYR-Kh-vW4" id="05v-73-LhA"/>
                     </connections>
                 </viewController>

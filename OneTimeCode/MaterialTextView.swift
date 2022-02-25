@@ -55,6 +55,7 @@ class MaterialTextView: UITextView {
     private (set) var lmd_status_state: TextFieldStatusState = .normal {
         didSet {
             setNeedsLayout()
+            updateBorderBasedOnStatusState()
         }
     }
     
@@ -241,18 +242,6 @@ class MaterialTextView: UITextView {
         }
     }
     
-//    @IBInspectable var hintFont: UIFont = .systemFont(ofSize: 11, weight: .regular) /* IDNFont.make(size: 11, weight: .regular) */ {
-//        didSet {
-//            hintLabel.font = hintFont
-//        }
-//    }
-//    
-//    @IBInspectable var hintNumberOfLines: Int = 2 {
-//        didSet {
-//            hintLabel.numberOfLines = hintNumberOfLines
-//        }
-//    }
-    
     var disabled = false {
         didSet {
             self.updateState(.notEditing)
@@ -270,12 +259,6 @@ class MaterialTextView: UITextView {
             updatePlaceholderConstraints()
         }
     }
-    
-//    @IBInspectable var hintLabelPadding: UIEdgeInsets = .init(top: 4, left: 16, bottom: 0, right: 16) {
-//        didSet {
-//            self.setNeedsLayout()
-//        }
-//    }
     
     @IBInspectable public var rightButtonWidth: CGFloat = 24 {
         didSet {
@@ -564,17 +547,18 @@ class MaterialTextView: UITextView {
         return .init(top: 20 + topPadding, left: leftPadding - 5, bottom: 20, right: leftPadding - 5)
     }
     
-//    private func animateHintLabelShow(_ message: String?) {
-//        UIView.transition(with: hintLabel, duration: 0.2, options: .transitionCrossDissolve, animations: {
-//            self.hintLabel.text = message
-//
-//            if self.lmd_status_state == .normal {
-//                self.compileEditingStyle()
-//            } else {
-//                self.layer.borderColor = self._baseColor.cgColor
-//            }
-//        }, completion: nil)
-//    }
+    private func updateBorderBasedOnStatusState() {
+        UIView.transition(with: self,
+                          duration: 0.3,
+                          options: .transitionCrossDissolve,
+                          animations: {
+            if self.lmd_status_state == .normal {
+                self.compileEditingStyle()
+            } else {
+                self.layer.borderColor = self._baseColor.cgColor
+            }
+        }, completion: nil)
+    }
     
     // MARK: - PUBLIC FUNCTIONS
     /// Update editing state of material textfield
@@ -582,7 +566,7 @@ class MaterialTextView: UITextView {
         self.lmd_state = state
     }
     /// Change Status State (.normal, .error, .warning) to a textfield, Assign message if you want to show HINT, and also give border width if you want to
-    func updateStatusState(_ state: TextFieldStatusState, message: String?, borderWidth: CGFloat = 0) {
+    func updateStatusState(_ state: TextFieldStatusState, borderWidth: CGFloat = 0) {
         self.lmd_status_state = state
         _borderWidth = borderWidth
     }
